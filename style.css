@@ -1,0 +1,207 @@
+/* plus-jakarta-sans-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('assets/fonts/plus-jakarta-sans-v8-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* plus-jakarta-sans-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('assets/fonts/plus-jakarta-sans-v8-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* plus-jakarta-sans-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('assets/fonts/plus-jakarta-sans-v8-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+  /* colors */
+  --clr-primary-400: hsl(341, 92%, 62%);
+  --clr-primary-300: hsl(341, 100%, 83%);
+  
+  --clr-neutral-600: hsl(233, 54%, 16%);
+  --clr-neutral-500: hsl(234, 25%, 52%);
+  --clr-neutral-400: hsl(232, 10%, 56%);
+  --clr-neutral-0: hsl(0, 0%, 100%);
+
+  --clr-primary-gradient: linear-gradient(hsl(13, 100%, 64%), hsl(322, 87%, 55%));
+  --clr-secondary-gradient: linear-gradient(hsl(237, 100%, 64%) hsl(322, 87%, 55%));
+
+  /* typography */
+  --fs-body-s: clamp(0.875rem, calc(0.875rem + ((1vw - 0.23399999999999999rem) * 0.2741)), 1rem);
+  --fs-body-m: clamp(1rem, calc(1rem + ((1vw - 0.23399999999999999rem) * 0.2741)), 1.125rem);
+  --fs-heading-s:clamp(1.25rem, calc(1.25rem + ((1vw - 0.23399999999999999rem) * 0.5482)), 1.5rem);
+  --fs-heading-m:clamp(1.5rem, calc(1.5rem + ((1vw - 0.23399999999999999rem) * 1.0965)), 2rem);
+  --fs-heading-l:clamp(2.5rem, calc(2.5rem + ((1vw - 0.23399999999999999rem) * 2.193)), 3.5rem);
+  
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+  --fw-body:500;
+  --fw-heading: 800;
+}
+
+/* -------- */
+/* Reset    */
+/* -------- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------*/
+/* Global   */
+/* ---------*/
+
+.wrapper {
+  width: min(calc(100% - 2rem), 69.375rem);
+  margin: auto;
+}
+
+body {
+  font: var(--fw-body) var(--fs-body-m) var(--font-family);
+  color: var(--clr-neutral-400);
+}
+
+.btn {
+  --btn-clr:var(--clr-neutral-0);
+  --btn-bg:var(--clr-neutral-600);
+  --btn-hover-bg:var(--clr-neutral-500);
+  --btn-hover-opacity:1;
+
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  border-radius: 1.75rem;
+  font-size: var(--fs-body-m);
+  font-weight: 700;
+  line-height: 1.75;
+  text-decoration: none;
+  color: var(--btn-clr);
+  background: var(--btn-bg);
+  transition: background-color .2s ease-in-out,
+              opacity .2s ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--btn-hover-bg);
+  opacity: var(--btn-hover-opacity);
+}
+
+.btn--big {
+  padding: 0.94rem 2.34rem;
+  line-height: 1.625;
+}
+
+.btn--hero {
+  --btn-clr:var(--clr-neutral-0);
+  --btn-bg:  var(--clr-primary-gradient);
+  --btn-hover-bg:var(--clr-primary-gradient);
+  --btn-hover-opacity:0.5;
+}
+
+/* -------- */
+/* Header   */
+/* -------- */
+
+.header {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+
+.header__logo {
+  font-size: 1.75rem;
+  font-weight: var(--fw-heading);
+  text-decoration: none;
+  color: var(--clr-neutral-600)
+}
+
+.header__logo:hover,
+.header__logo:focus,
+.header__logo:active {
+  color: var(--clr-neutral-600)
+}
+
+/* ---------------- */
+/* Header section   */
+/* ---------------- */
+
+.hero {
+  padding-top:2.37rem;
+}
+
+.hero__title {
+  font-size: var(--fs-heading-l);
+  font-weight: var(--fw-heading);
+  color: var(--clr-neutral-600);
+  margin-bottom: 1.62rem;
+}
+
+.hero__text {
+  line-height: 1.625;
+  margin-bottom: 1.5rem;;
+}
+
+
+.hero-img{
+  padding: 2.88rem 0;
+}
+
+.hero-img__wrapper{
+  position: relative;
+  padding: 1.5rem 2.31rem;
+}
+
+.hero-img__circle {
+  width: 15.8125rem;
+  height: 15.8125rem;
+  background: url(assets/hero.png) no-repeat top -19% center / 95% auto,
+    var(--clr-primary-gradient);
+  border-radius: 50%;
+  margin: auto;
+}
+
+.hero-counter {
+  display: grid;
+  position: absolute;
+  padding: 1rem 1.25rem;
+  border-radius: 0.625rem;
+  font: 700 var(--fs-body-s)/2 var(--font-family);
+  background: var(--clr-neutral-0);
+  box-shadow: 0px 34px 54px 0px rgba(6, 22, 141, 0.16);
+}
+
+.hero-counter > :last-child {
+  font: 800 2rem/normal var(--font-family);
+  color: var(--clr-neutral-600);
+}
+
+.hero-counter--top-right {
+  top: 0;
+  right: 1.5rem;
+}
+
+.hero-counter--bottom-left {
+  padding-right: 2.81rem;
+  bottom: 0;
+  left: 1.5rem;
+}
