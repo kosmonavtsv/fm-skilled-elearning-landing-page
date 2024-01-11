@@ -1,3 +1,16 @@
+/* -------------- */
+/*   !!!Hack!!!   */
+/* -------------- */
+/* 
+  I don't like this solution, but I don't 
+  have time to fix overflow issue from 
+  absolute .hero-img__circle-second
+*/
+body,
+html {
+  overflow-x: hidden;
+}
+
 /* plus-jakarta-sans-500 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -45,27 +58,19 @@
   /* typography */
   --fs-body-s: clamp(
     0.875rem,
-    calc(0.875rem + ((1vw - 0.23399999999999999rem) * 0.2741)),
+    calc(0.875rem + ((1vw - 0.48rem) * 0.5952)),
     1rem
   );
-  --fs-body-m: clamp(
-    1rem,
-    calc(1rem + ((1vw - 0.23399999999999999rem) * 0.2741)),
-    1.125rem
-  );
+  --fs-body-m: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.5952)), 1.125rem);
   --fs-heading-s: clamp(
     1.25rem,
-    calc(1.25rem + ((1vw - 0.23399999999999999rem) * 0.5482)),
+    calc(1.25rem + ((1vw - 0.48rem) * 1.1905)),
     1.5rem
   );
-  --fs-heading-m: clamp(
-    1.5rem,
-    calc(1.5rem + ((1vw - 0.23399999999999999rem) * 1.0965)),
-    2rem
-  );
+  --fs-heading-m: clamp(1.5rem, calc(1.5rem + ((1vw - 0.48rem) * 2.381)), 2rem);
   --fs-heading-l: clamp(
     2.5rem,
-    calc(2.5rem + ((1vw - 0.23399999999999999rem) * 2.193)),
+    calc(2.5rem + ((1vw - 0.48rem) * 4.7619)),
     3.5rem
   );
 
@@ -184,12 +189,11 @@ body {
 }
 
 .hero-img {
-  padding-top: 2.88rem;
-}
-
-.hero-img__wrapper {
+  /* max-width: 20.4375rem; */
+  margin: auto;
+  margin-top: 4.38rem;
   position: relative;
-  padding: 1.5rem 2.31rem;
+  /* padding: 1.5rem 2.31rem; */
 }
 
 .hero-img__circle {
@@ -197,7 +201,7 @@ body {
   height: 15.8125rem;
   background: url(assets/hero.png) no-repeat top -19% center / 95% auto,
     var(--clr-primary-gradient);
-  border-radius: 50%;
+  border-radius: 9.90625rem;
   margin: auto;
 }
 
@@ -217,14 +221,14 @@ body {
 }
 
 .hero-counter--top-right {
-  top: 0;
-  right: 1.5rem;
+  top: -1.5rem;
+  right: .5rem;
 }
 
 .hero-counter--bottom-left {
   padding-right: 2.81rem;
-  bottom: 0;
-  left: 1.5rem;
+  bottom: -1.5rem;
+  left: .5rem;
 }
 
 /* ---------------- */
@@ -232,7 +236,7 @@ body {
 /* ---------------- */
 
 .courses-section {
-  padding-top: 4.12rem;
+  padding-block: 5.62rem 5rem;
 }
 
 .courses-section__title {
@@ -244,7 +248,6 @@ body {
 }
 
 .courses {
-  padding-block: 2.5rem 5rem;
   display: grid;
   gap: 2.5rem;
 }
@@ -333,3 +336,86 @@ footer {
   --btn-hover-bg: var(--clr-secondary-gradient);
   --btn-hover-opacity: 0.5;
 }
+
+/* ---------------- */
+/* Media queries    */
+/* ---------------- */
+
+/* Tablet */
+
+@media screen and (min-width: 48rem) {
+  .wrapper {
+    width: min(calc(100% - 4.94rem), 69.375rem);
+    margin: auto;
+  }
+
+  .hero {
+    padding-top: 3.11rem;
+    display: grid;
+    grid-template-columns: 24.875rem 1fr;
+    justify-items: start;
+    align-items: center;
+    gap: 2.08rem;
+  }
+
+  .hero-img {
+    --circle-width: 216.54px;
+    max-width: none;
+    margin: 0;
+  }
+
+  .hero-img__circle {
+    height: 23.90819rem;
+    width: var(--circle-width);
+    background: no-repeat url(assets/hero.png) bottom right / 14.9201875rem auto,
+      var(--clr-primary-gradient);
+    margin: 0;
+  }
+
+  .hero-img__circle-second {
+    --border-radius: calc(var(--circle-width) / 2);
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    width: 100%;
+    height: 200%;
+    transform-origin: bottom;
+    transform: translateY(calc(-1 * var(--border-radius))) rotate(45deg)
+      translateY(var(--border-radius));
+    background: var(--clr-secondary-gradient);
+    border-radius: var(--border-radius);
+  }
+
+  .hero-counter--top-right {
+    top:-0.86rem;
+    right: -3.21rem;
+  }
+
+  .hero-counter--bottom-left {
+    left:-2.83rem;
+    bottom: -2.36rem;
+  }
+
+  .courses-section {
+    padding-block: 10.04rem 5.38rem;
+  }
+
+  .courses-section__title {
+    padding: 3.5rem 1.31rem 3.5rem 2rem;
+  }
+
+  .courses {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem 0.63rem;
+  }
+
+  .course {
+    padding-inline: 2rem 1.38rem;
+  }
+
+  .course__icon {
+    left:2rem;
+  }
+}
+
+/* Desktop */
