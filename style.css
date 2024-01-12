@@ -194,7 +194,7 @@ body {
     calc(24.875rem + ((1vw - 0.48rem) * 17.5476)),
     28.56rem
   );
-  max-width: 28.56rem;
+  max-width: 28.7rem;
 }
 
 .hero__title {
