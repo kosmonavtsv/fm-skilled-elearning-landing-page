@@ -295,7 +295,7 @@ body {
 }
 
 .course__icon {
-  --icon: url(/assets/icon-animation.svg);
+  --icon: url(assets/icon-animation.svg);
   position: absolute;
   top: 0;
   left: var(--course-icon-left);
@@ -306,23 +306,23 @@ body {
 }
 
 .course__icon--animation {
-  --icon: url(/assets/icon-animation.svg);
+  --icon: url(assets/icon-animation.svg);
 }
 
 .course__icon--business {
-  --icon: url(/assets/icon-business.svg);
+  --icon: url(assets/icon-business.svg);
 }
 
 .course__icon--crypto {
-  --icon: url(/assets/icon-crypto.svg);
+  --icon: url(assets/icon-crypto.svg);
 }
 
 .course__icon--design {
-  --icon: url(/assets/icon-design.svg);
+  --icon: url(assets/icon-design.svg);
 }
 
 .course__icon--photography {
-  --icon: url(/assets/icon-photography.svg);
+  --icon: url(assets/icon-photography.svg);
 }
 
 .course__title {
