@@ -20,5 +20,5 @@ This is a solution to the [Skilled e-learning landing page challenge on Frontend
 
 ### Links
 
-- Solution URL: [Frontend Mentor solution page](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor solution page](https://www.frontendmentor.io/solutions/landing-page-mobile-first-grid-transform-css-custom-properties-twHv4W6dmw)
 - Live Site URL: [Github Page](https://kosmonavtsv.github.io/skilled-elearning-landing-page)
