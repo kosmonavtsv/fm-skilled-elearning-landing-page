@@ -3,7 +3,7 @@
 /* -------------- */
 /* 
   I don't like this solution, but I don't 
-  have time to fix overflow issue from 
+  know how to fix overflow issue from 
   absolute .hero-img__circle-second
 */
 body,
@@ -62,6 +62,7 @@ html {
     1rem
   );
   --fs-body-m: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.5952)), 1.125rem);
+  --lh-body-m: 1.625rem;
   --fs-heading-s: clamp(
     1.25rem,
     calc(1.25rem + ((1vw - 0.48rem) * 1.1905)),
@@ -77,6 +78,30 @@ html {
   --font-family: 'Plus Jakarta Sans', sans-serif;
   --fw-body: 500;
   --fw-heading: 800;
+
+  --wrapper-padding: clamp(
+    2rem,
+    calc(2rem + ((1vw - 0.234375rem) * 11.9695)),
+    4.94rem
+  );
+  --wrapper-max-width: 69.375rem;
+
+  --header-pd-top: 1rem;
+  --hero-pd-top: 2.37rem;
+  --hero-title-spacer: 1.62rem;
+  --hero-text-spacer: 1.5rem;
+  --hero-circle-width: 15.8125rem;
+  --hero-circle-border-radius: calc(var(--hero-circle-width) / 2);
+  --courses-section-pd-block: 5.62rem 5rem;
+  --courses-gap: 2.5rem;
+  --course-gap: 1rem;
+  --course-border-radius: 0.625rem;
+  --course-pd-left: 1.78rem;
+  --course-pd-right: 1.78rem;
+  --course-pd: 3.5rem var(--course-pd-right) 2rem var(--course-pd-left);
+  --course-icon-left: 1.75rem;
+  --btn-pd: 0.625rem 1.5rem;
+  --footer-pd-block: 2.25rem;
 }
 
 /* -------- */
@@ -102,12 +127,12 @@ picture {
 /* ---------*/
 
 .wrapper {
-  width: min(calc(100% - 2rem), 69.375rem);
+  width: min(calc(100% - var(--wrapper-padding)), var(--wrapper-max-width));
   margin: auto;
 }
 
 body {
-  font: var(--fw-body) var(--fs-body-m) / 1.625 var(--font-family);
+  font: var(--fw-body) var(--fs-body-m) / var(--lh-body-m) var(--font-family);
   color: var(--clr-neutral-400);
   background: linear-gradient(--clr-neutral-0, var(--clr-neutral-500));
 }
@@ -117,11 +142,10 @@ body {
   --btn-bg: var(--clr-neutral-600);
   --btn-hover-bg: var(--clr-neutral-500);
   --btn-hover-opacity: 1;
-
   display: inline-block;
-  padding: 0.625rem 1.5rem;
+  padding: var(--btn-pd);
   border-radius: 1.75rem;
-  font: 700 var(--fs-body-m) / 1.75 var(--font-family);
+  font: 700 var(--fs-body-m) / 1.75rem var(--font-family);
   text-decoration: none;
   color: var(--btn-clr);
   background: var(--btn-bg);
@@ -134,20 +158,10 @@ body {
   opacity: var(--btn-hover-opacity);
 }
 
-.btn--big {
-  padding: 0.94rem 2.34rem;
-  line-height: 1.625;
-}
-
 .logo {
   --logo-clr: var(--clr-neutral-600);
-  font: var(--fw-heading) 1.75rem / normal var(--font-family);
-  text-decoration: none;
-  color: var(--logo-clr);
-}
-
-.logo {
-  font: var(--fw-heading) 1.75rem / normal var(--font-family);
+  --logo-fs: clamp(1.75rem, calc(1.75rem + ((1vw - 0.48rem) * 2.381)), 2.25rem);
+  font: var(--fw-heading) var(--logo-fs) / normal var(--font-family);
   text-decoration: none;
   color: var(--logo-clr);
 }
@@ -157,7 +171,7 @@ body {
 /* -------- */
 
 .header {
-  padding-top: 1rem;
+  padding-top: var(--header-pd-top);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -168,17 +182,29 @@ body {
 /* ---------------- */
 
 .hero {
-  padding-top: 2.37rem;
+  padding-top: var(--hero-pd-top);
+  display: grid;
+  justify-items: stretch;
+  gap: 4.38rem;
+}
+
+.hero__info {
+  min-width: min(
+    24.875rem,
+    calc(24.875rem + ((1vw - 0.48rem) * 17.5476)),
+    28.56rem
+  );
+  max-width: 28.56rem;
 }
 
 .hero__title {
   font: var(--fw-heading) var(--fs-heading-l) / normal var(--font-family);
   color: var(--clr-neutral-600);
-  margin-bottom: 1.62rem;
+  margin-bottom: var(--hero-title-spacer);
 }
 
 .hero__text {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--hero-text-spacer);
 }
 
 .hero__btn {
@@ -186,22 +212,20 @@ body {
   --btn-bg: var(--clr-primary-gradient);
   --btn-hover-bg: var(--clr-primary-gradient);
   --btn-hover-opacity: 0.5;
+  padding: 0.94rem 2.34rem;
+  line-height: 1.625;
 }
 
 .hero-img {
-  /* max-width: 20.4375rem; */
-  margin: auto;
-  margin-top: 4.38rem;
   position: relative;
-  /* padding: 1.5rem 2.31rem; */
 }
 
 .hero-img__circle {
-  width: 15.8125rem;
-  height: 15.8125rem;
+  width: var(--hero-circle-width);
+  aspect-ratio: 1;
   background: url(assets/hero.png) no-repeat top -19% center / 95% auto,
     var(--clr-primary-gradient);
-  border-radius: 9.90625rem;
+  border-radius: var(--hero-circle-border-radius);
   margin: auto;
 }
 
@@ -210,25 +234,30 @@ body {
   position: absolute;
   padding: 1rem 1.25rem;
   border-radius: 0.625rem;
-  font: 700 var(--fs-body-s) / 2 var(--font-family);
+  font: 700 var(--fs-body-s) / 1.75rem var(--font-family);
   background: var(--clr-neutral-0);
   box-shadow: 0px 34px 54px 0px rgba(6, 22, 141, 0.16);
 }
 
 .hero-counter > :last-child {
-  font: 800 2rem / normal var(--font-family);
+  --hero-counter-value-fs: clamp(
+    2rem,
+    calc(2rem + ((1vw - 0.48rem) * 2.381)),
+    2.5rem
+  );
+  font: 800 var(--hero-counter-value-fs) / normal var(--font-family);
   color: var(--clr-neutral-600);
 }
 
 .hero-counter--top-right {
   top: -1.5rem;
-  right: .5rem;
+  right: 0.5rem;
 }
 
 .hero-counter--bottom-left {
   padding-right: 2.81rem;
   bottom: -1.5rem;
-  left: .5rem;
+  left: 0.5rem;
 }
 
 /* ---------------- */
@@ -236,27 +265,32 @@ body {
 /* ---------------- */
 
 .courses-section {
-  padding-block: 5.62rem 5rem;
+  padding-block: var(--courses-section-pd-block);
 }
 
 .courses-section__title {
   padding: 1.5rem 1.78rem 2rem 1.78rem;
-  font: var(--fw-heading) var(--fs-heading-m) / 1.33 var(--font-family);
+  font: var(--fw-heading) var(--fs-heading-m) / 1.3333 var(--font-family);
   color: var(--clr-neutral-0);
   background: var(--clr-primary-gradient);
-  border-radius: 0.625rem;
+  border-radius: var(--course-border-radius);
 }
 
 .courses {
   display: grid;
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(21.1875rem, 1fr));
+  gap: var(--courses-gap);
 }
 
 .course {
   position: relative;
-  padding: 3.5rem 1.78rem 2rem 1.78rem;
+  min-height: 16.1875rem;
+  display: grid;
+  gap: var(--course-gap);
+  grid-template-rows: auto 1fr auto;
+  padding: var(--course-pd);
   background: var(--clr-neutral-0);
-  border-radius: 0.625rem;
+  border-radius: var(--course-border-radius);
   box-shadow: 0px 25px 50px 0px rgba(6, 22, 141, 0.04);
 }
 
@@ -264,7 +298,7 @@ body {
   --icon: url(/assets/icon-animation.svg);
   position: absolute;
   top: 0;
-  left: 1.75rem;
+  left: var(--course-icon-left);
   transform: translateY(-42%);
   width: 3.5rem;
   aspect-ratio: 1;
@@ -294,11 +328,6 @@ body {
 .course__title {
   font: var(--fw-heading) var(--fs-heading-s) / 1.25 var(--font-family);
   color: var(--clr-neutral-600);
-  margin-bottom: 1rem;
-}
-
-.course__description {
-  margin-bottom: 1.5rem;
 }
 
 .course__btn {
@@ -316,7 +345,7 @@ body {
 /* ---------------- */
 
 footer {
-  padding: 2.25rem 0;
+  padding: var(--footer-pd-block) 0;
   background: var(--clr-neutral-600);
 }
 
@@ -344,78 +373,116 @@ footer {
 /* Tablet */
 
 @media screen and (min-width: 48rem) {
-  .wrapper {
-    width: min(calc(100% - 4.94rem), 69.375rem);
-    margin: auto;
+  :root {
+    --header-pd-top: 1.5rem;
+    --hero-pd-top: 3.11rem;
+    --hero-circle-width: 13.53375rem;
+    --courses-section-pd-block: 10.04rem 5.38rem;
+    --courses-gap: 3.5rem 0.63rem;
+    --course-border-radius: 0.625rem;
+    --course-pd-left: 2rem;
+    --course-pd-right: 1.38rem;
+    --course-icon-left:2rem;
   }
 
   .hero {
-    padding-top: 3.11rem;
-    display: grid;
-    grid-template-columns: 24.875rem 1fr;
+    grid-template-columns: auto minmax(16.1rem, 23.1925rem);
     justify-items: start;
+    justify-content: space-between;
     align-items: center;
     gap: 2.08rem;
   }
 
   .hero-img {
-    --circle-width: 216.54px;
     max-width: none;
     margin: 0;
   }
 
   .hero-img__circle {
-    height: 23.90819rem;
-    width: var(--circle-width);
-    background: no-repeat url(assets/hero.png) bottom right / 14.9201875rem auto,
+    aspect-ratio: 0.5660714285714286;
+    background: no-repeat url(assets/hero.png) bottom right / 110% auto,
       var(--clr-primary-gradient);
     margin: 0;
   }
 
   .hero-img__circle-second {
-    --border-radius: calc(var(--circle-width) / 2);
     position: absolute;
     z-index: -1;
     bottom: 0;
     width: 100%;
     height: 200%;
     transform-origin: bottom;
-    transform: translateY(calc(-1 * var(--border-radius))) rotate(45deg)
-      translateY(var(--border-radius));
+    transform: translateY(calc(-1 * var(--hero-circle-border-radius)))
+      rotate(45deg) translateY(var(--hero-circle-border-radius));
     background: var(--clr-secondary-gradient);
-    border-radius: var(--border-radius);
+    border-radius: var(--hero-circle-border-radius);
   }
 
   .hero-counter--top-right {
-    top:-0.86rem;
+    top: -0.86rem;
     right: -3.21rem;
   }
 
   .hero-counter--bottom-left {
-    left:-2.83rem;
+    left: -2.83rem;
     bottom: -2.36rem;
   }
 
-  .courses-section {
-    padding-block: 10.04rem 5.38rem;
-  }
-
   .courses-section__title {
-    padding: 3.5rem 1.31rem 3.5rem 2rem;
-  }
-
-  .courses {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3.5rem 0.63rem;
-  }
-
-  .course {
-    padding-inline: 2rem 1.38rem;
-  }
-
-  .course__icon {
-    left:2rem;
+    padding: var(--course-pd);
   }
 }
 
 /* Desktop */
+@media screen and (min-width: 80rem) {
+  :root {
+    --lh-body-m: 1.75rem;
+    --courses-section-pd-block: 8.37rem 8.75rem;
+    --courses-gap: 5rem 1.87rem;
+    --course-gap: 1.5rem;
+    --course-pd: 4rem 2rem 2.5rem 2rem;
+    --course-border-radius: 0.9375rem;
+    --btn-pd: 0.87rem 1.97rem;
+    --footer-pd-block: 2rem;
+    --hero-pd-top: 5.44rem;
+    --hero-title-spacer: 1.81rem;
+    --hero-text-spacer: 2.5rem;
+    --hero-circle-width: 19.8125rem;
+  }
+
+  .hero__btn {
+    padding: 1.09rem 1.97rem;
+    line-height: 1.55;
+  }
+
+  .hero__info {
+    /* Pushes the hero information a little higher off center */
+    padding-bottom: 1.94rem;
+  }
+
+  .hero__text {
+    /* :( There's no reason, just design */
+    padding-right: 0.75rem;
+  }
+
+  .hero-counter {
+    padding: 1.25rem 1.5rem;
+    border-radius: 15px;
+  }
+
+  .hero-counter--top-right {
+    top: 6.44rem;
+    right: -7.39rem;
+    width: 9.69rem;
+  }
+
+  .hero-counter--bottom-left {
+    bottom: 6.13rem;
+    left: -7.5rem;
+    width: 12.44rem;
+  }
+
+  .courses-section__title {
+    line-height: 1.25;
+  }
+}
