@@ -44,6 +44,7 @@ html {
   --clr-neutral-600: hsl(233, 54%, 16%);
   --clr-neutral-500: hsl(234, 25%, 52%);
   --clr-neutral-400: hsl(232, 10%, 56%);
+  --clr-neutral-100:hsl(236, 100%, 97%);
   --clr-neutral-0: hsl(0, 0%, 100%);
 
   --clr-primary-gradient: linear-gradient(
@@ -134,7 +135,7 @@ picture {
 body {
   font: var(--fw-body) var(--fs-body-m) / var(--lh-body-m) var(--font-family);
   color: var(--clr-neutral-400);
-  background: linear-gradient(--clr-neutral-0, var(--clr-neutral-500));
+  background: linear-gradient(var(--clr-neutral-0), var(--clr-neutral-100));
 }
 
 .btn {
